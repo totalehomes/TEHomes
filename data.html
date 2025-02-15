@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+    <style>
+        /* Your existing styles remain exactly the same */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            background-image: url("a754f.jpg");
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: black;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            margin-right: 20px;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .menu {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-items li a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        .search-box input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+     .logout-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-button {
+            background-color: #ee0e0e;
+            color: white;
+        }
+
+        .logout-button:hover {
+            background-color: #555; /* Hover effect */
+        }
+
+        .main-content {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .new-container {
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .tabs-left {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+        .tabs-left ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tabs-left li {
+            padding: 10px 0;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tabs-left li:last-child {
+            border-bottom: none;
+        }
+
+        .tabs-left li.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .tabs-content {
+            flex: 1;
+            background-color: #827e7e;
+            padding: 20px;
+            margin-left: 20px;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .default-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #0c0c0c;
+            font-size: 2.20em;
+            display: none;
+        }
+
+        .tabs-content:not(.has-active-tab) .default-text {
+            display: block;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+        h2 {
+            color: #0c0c0c;
+            margin-bottom: 16px;
+        }
+
+        p {
+            color: #060606;
+            margin-bottom: 20px;
+        }
+        .unit-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.info-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-color: #464545;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-label::before {
+    font-size: 16px;
+}
+
+.info-value {
+    color: #555;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 28px; /* Align with icon */
+}
+
+/* Add a subtle gradient background to the container */
+#info {
+    background: linear-gradient(135deg, #f9f9f9, #ffffff);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        th {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        td {
+            color: #555;
+        }
+
+        tr:hover td {
+            background-color: #f8f9fa;
+            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        tbody tr {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        tbody tr:first-child td:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        tbody tr:first-child td:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+
+        tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+
+        th:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="logorem.png" alt="Logo">
+            </div>
+            <div class="menu">
+                <ul class="menu-items">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="data.html">My Bookings</a></li>
+                    <li><a href="receipts.html">My Receipts</a></li>
+                    <li><a href="ITQE - Project Update - January 2025.pdf">Project Update</a></li>
+                </ul>
+            </div>
+            <div class="user-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <button type="button" class="logout-button">Logout</button> <!-- Logout button -->
+                <div class="user-info"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="new-container">
+        <div class="tabs-left">
+            <ul>
+                <li data-tab="info" class="active">Unit Info</li>
+                <li data-tab="overview">Payment Schedule</li>
+                <li data-tab="term-sheet">Term Sheet</li>
+                <li data-tab="csoa">CSoA</li>
+            </ul>
+        </div>
+        <div class="tabs-content">
+            <div id="info" class="tab-pane active">
+                <h1>Unit Info</h1>
+                <div class="unit-info-grid">
+                    <div class="info-item">
+                        <span class="info-label">👤 Name</span>
+                        <span class="info-value">Anuradha Rama Setty | Sandhya Setty | Rama Setty</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🏢 Unit No</span>
+                        <span class="info-value">1154</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🏗️ Tower</span>
+                        <span class="info-value">1</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📶 Level</span>
+                        <span class="info-value">15</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📏 Saleable Area</span>
+                        <span class="info-value">2305</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🏠 Built-up Area</span>
+                        <span class="info-value">1844</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🧹 Carpet Area</span>
+                        <span class="info-value">1453</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🎨 Design Specification</span>
+                        <span class="info-value">Blue</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📅 Agreement Sign Date</span>
+                        <span class="info-value">Mar-22</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🏦 Partner Bank</span>
+                        <span class="info-value">ICICI</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">💳 Payment Plan</span>
+                        <span class="info-value">Subvention</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📦 Handover Date</span>
+                        <span class="info-value">Aug-25(Planned)</span> <!-- Add your handover date here -->
+                    </div>
+                </div>
+            </div>
+            <div id="overview" class="tab-pane">
+                <h2>Unit Overview - 1154 ITQE</h2>
+                <p>Financial overview of your booking till date.</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Unit Cost (Blue Specification)</td>
+                            <td>₹ 28,554,720.00</td>
+                        </tr>
+                        <tr>
+                            <td>Estimated Taxes</td>
+                            <td>₹ 3,426,567.00</td>
+                        </tr>
+                        <tr>
+                            <td>Total Unit Cost (Estimate)</td>
+                            <td>₹ 31,981,287.00</td>
+                        </tr>
+                        <tr>
+                            <td>Invoice Raised (So Far)</td>
+                            <td>₹ 28,658,493</td>
+                        </tr>
+                        <tr>
+                            <td>Payment Received (So Far)</td>
+                            <td>₹ 26,790,968.00</td>
+                        </tr>
+                        <tr>
+                            <td>Balance Payment (ToDate)</td>
+                            <td>₹ 1,865,171.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="term-sheet" class="tab-pane">
+                <h2>Term Sheet</h2>
+                <p>Please click below to view the non-binding document outlining the key terms and conditions of the transaction, including the purchase price, deposit amount, payment schedule, contingencies (such as financing and inspections), closing date, and any special conditions agreed upon by the buyer and seller.</p>
+                <a href="Term Sheet.pdf" target="_blank">Rama Setty - 1154 - Term Sheet</a> </div>
+            <div id="csoa" class="tab-pane">
+                <h2>CSoA</h2>
+                <p>Please click below to view the Cumulative Statement of Account (CSOA) is a financial document that provides a detailed record of all transactions, including payments, charges, and outstanding balances. <br><br>This Statement reflects the running total of financial activities related to your unit 1154 at ITQE, such as loan repayments, condominium fees, or other financial obligations. <br><br>This statement helps account you track their financial standing and reconcile past transactions.</p>
+                <a href="Total Environment _CSoA.pdf" target="_blank">Rama Setty - 1154 - CSoA</a> </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabsLeft = document.querySelector('.tabs-left');
+            const tabsContent = document.querySelector('.tabs-content');
+            const tabPanes = tabsContent.querySelectorAll('.tab-pane');
+
+            // Set the default active tab to "Unit Info"
+            const defaultTab = document.querySelector('[data-tab="info"]');
+            const defaultPane = document.getElementById('info');
+
+            // Remove active class from all tabs and panes
+            tabsLeft.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+
+            // Add active class to the default tab and pane
+            defaultTab.classList.add('active');
+            defaultPane.classList.add('active');
+
+            // Handle tab clicks
+            tabsLeft.addEventListener('click', (event) => {
+                const clickedTab = event.target.closest('li');
+                if (!clickedTab) return;
+
+                const targetId = clickedTab.dataset.tab;
+
+                // Remove active class from all tabs and panes
+                tabsLeft.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding pane
+                clickedTab.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+
+                const hasActiveTab = tabsContent.querySelector('.tab-pane.active') !== null;
+                tabsContent.classList.toggle('has-active-tab', hasActiveTab);
+            });
+
+            // Logout button functionality
+            document.querySelector('.logout-button').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

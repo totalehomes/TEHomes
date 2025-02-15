@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Receipts</title>
+    <style>
+        /* Your existing styles remain exactly the same */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            background-image: url("recep.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        html {
+    height: 100%; /* Important for body to fill viewport */
+}
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: black;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            margin-right: 20px;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .menu {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-items li a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .search-box {
+            margin-right: 20px;
+        }
+
+        .logout-button {
+            background-color: #f80505;
+            color: white;
+        }
+
+        .logout-button:hover {
+            background-color: #555; /* Hover effect */
+        }
+
+        .main-content {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .header-container {
+            background-color: #ae3c03;
+            color: #0e0d0d;
+            padding: 20px;
+            margin-bottom: 20px; /* Add space between the header and accordion */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .accordion-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .accordion {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            cursor: pointer;
+            background-color: #666769;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 14px;
+        }
+
+        .accordion-header.active::after {
+            content: '▲';
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .pdf-grid a {
+            display: block;
+            padding: 10px;
+            background-color: #25d76d;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer; /* Make links look clickable */
+        }
+
+        .pdf-grid a:hover {
+            background-color: #1eae5a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="logorem.png" alt="Logo">
+            </div>
+            <div class="menu">
+                <ul class="menu-items">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="data.html">My Bookings</a></li>
+                    <li><a href="receipts.html">My Receipts</a></li>
+                    <li><a href="ITQE - Project Update - January 2025.pdf">Project Update</a></li>
+                </ul>
+            </div>
+            <div class="user-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <button type="button" class="logout-button">Logout</button> <!-- Logout button -->
+                <div class="user-info"> </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-container">
+        <h1>All Your Receipts in One Place</h1>
+        <p>Below is a list of all your payment receipts. You can download or print them for your records. <br><br>If you notice any issues, please contact our billing team.</p>
+    </div>
+
+
+    <div class="accordion-container">
+
+        <div class="accordion">
+            <div class="accordion-header">Phase 1</div>
+            <div class="accordion-content">
+                <div class="pdf-grid">
+                    <a onclick="openPDF('1401303868.pdf')"> R.No.- 1401303868</a>
+                    <a onclick="openPDF('1401303869.pdf')"> R.No.- 1401303869</a>
+                    <a onclick="openPDF('1401304017.pdf')"> R.No.- 1401304017</a>
+                    <a onclick="openPDF('1401304018.pdf')"> R.No.- 1401304018</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">Phase 2</div>
+            <div class="accordion-content">
+                <div class="pdf-grid">
+                    <a onclick="openPDF('1401304019.pdf')"> R.No.- 1401304019</a>
+                    <a onclick="openPDF('1401304022.pdf')"> R.No.- 1401304022</a>
+                    <a onclick="openPDF('1401304023.pdf')" > R.No.- 1401304023</a>
+                    <a onclick="openPDF('1401400148.pdf')" > R.No.- 1401400148</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">Phase 3</div>
+            <div class="accordion-content">
+                <div class="pdf-grid">
+                    <a onclick="openPDF('1401400149.pdf')"> R.No.- 1401400149</a>
+                    <a onclick="openPDF('1401400845.pdf')"> R.No.- 1401400845</a>
+                    <a onclick="openPDF('1401400846.pdf')"> R.No.- 1401400846</a>
+                    <a onclick="openPDF('1401500501.pdf')"> R.No.- 1401500501</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">Phase 4</div>
+            <div class="accordion-content">
+                <div class="pdf-grid">
+                    <a onclick="openPDF('1401500506.pdf')"> R.No.- 1401500506</a>
+                    <a onclick="openPDF('1401500511.pdf')"> R.No.- 1401500511</a>
+                    <a onclick="openPDF('1401500516.pdf')"> R.No.- 1401500516</a>
+                    <a onclick="openPDF('1401500521.pdf')"> R.No.- 1401500521</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">Phase 5</div>
+            <div class="accordion-content">
+                <div class="pdf-grid">
+                    <a onclick="openPDF('1401500526.pdf')"> R.No.- 1401500526</a>
+                    <a onclick="openPDF('1401500531.pdf')"> R.No.- 1401500531</a>
+                    <a onclick="openPDF('1401500536.pdf')"> R.No.- 1401500536</a>
+                    <a onclick="openPDF('1401500541.pdf')"> R.No.- 1401500541</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header">Phase 6</div>
+            <div class="accordion-content">
+                <div class="pdf-grid">
+                    <a onclick="openPDF('1401500546.pdf')"> R.No.- 1401500546</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openPDF(pdfURL) {
+            const width = 600; // Adjust width as needed
+            const height = 400; // Adjust height as needed
+            const left = (window.innerWidth - width) / 2; // Center horizontally
+            const top = (window.innerHeight - height) / 2; // Center vertically
+
+            window.open(pdfURL, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
+        }
+ const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        // Toggle the clicked accordion
+        const content = header.nextElementSibling;
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+            header.classList.remove('active');
+        } else {
+            content.style.display = 'block';
+            header.classList.add('active');
+        }
+    });
+});
+        // Logout button functionality
+        document.querySelector('.logout-button').addEventListener('click', function() {
+            // Redirect to the login page
+            window.location.href = 'index.html';
+        });
+
+</script>
+</body>
+</html>
